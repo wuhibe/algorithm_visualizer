@@ -1,14 +1,11 @@
 <script>
-	export let char = 'x';
+	export let cell = {char:'x', state:'default'};
 </script>
-<span>{char}</span>
+<span class={cell.state}>{cell.char}</span>
 
 <style>
 	* {
-		background-color: #fff7e8;
-		color: #121307;
 		font-size: x-large;
-		border: solid 1px dimgray;
 		width: 30px;
 		height: 30px;
 		border-radius: 3px;
@@ -16,5 +13,24 @@
 		align-items: center;
 		justify-content: center;
 		margin: 6px;
+	}
+	.default {
+		border: solid 1px dimgray;
+		background-color: #fff7e8;
+		color: #262719;
+	}
+	.success {
+		width: 26px;
+		height: 26px;
+		border: solid 3px #2f5c30;
+		background-color: #4a8810;
+		color: #e6e8d8;
+	}
+	.check {
+		width: 26px;
+		height: 26px;
+		border: solid 3px #464837;
+		background-color: #efc16c;
+		color: #121307;
 	}
 </style>

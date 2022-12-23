@@ -1,22 +1,18 @@
-const searchGrid = (grid: string[][], word: string) => {
+const searchGrid = (grid: object[][], word: string) => {
 	// create initial vars
 	let visited = new Set();
 	const currentWord = '';
 
 	// function to search the grid for 'word'
 	const dfs = (row: number, col: number, currentWord: string, index: number) => {
-		if (
-			row < 0 ||
-			row >= grid.length ||
-			col < 0 ||
-			col >= grid[row].length ||
-			visited.has(`${row}, ${col}`) ||
-			grid[row][col] != word[index]
-		)
-			return;
+		if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length) return;
+
+		grid[row][col].state = 'check';
+
+		if (visited.has(`${row}, ${col}`) || grid[row][col].char != word[index]) return;
 
 		visited.add(`${row}, ${col}`);
-		currentWord += grid[row][col];
+		currentWord += grid[row][col].char;
 
 		// if 'word' found in grid, return
 		if (currentWord === word) return true;
@@ -30,7 +26,7 @@ const searchGrid = (grid: string[][], word: string) => {
 			dfs(row, col - 1, currentWord, index)
 		)
 			return true;
-
+		visited.delete(`${row}, ${col}`);
 		return false;
 	};
 

@@ -9,8 +9,8 @@
 <div class="parent">
 	{#each grid as row}
 		<div class="row">
-			{#each row as char}
-				<Cell {char} />
+			{#each row as cell}
+				<Cell {cell} />
 			{/each}
 		</div>
 	{/each}
