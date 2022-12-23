@@ -58,7 +58,7 @@
 		let j = 1;
 		visited.forEach((element) => {
 			setTimeout(() => {
-				grid[+element.split(',')[0]][+element.split(',')[1]].state = 'check';
+				grid[+element.split(',')[1]][+element.split(',')[2]].state = 'check';
 			}, 120 * j);
 			j++;
 		});
@@ -77,9 +77,9 @@
 
 	const searchGrid = (word) => {
 		// function to search the grid for 'word'
-		const dfs = (row, col, currentWord, index) => {
+		const dfs = (row, col, currentWord, index, iter) => {
 			if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length) return;
-			visited.add(`${row}, ${col}`);
+			visited.add(`${iter},${row},${col}`);
 
 			if (answer.has(`${row}, ${col}`) || grid[row][col].char != word[index]) return;
 			answer.add(`${row}, ${col}`);
@@ -92,10 +92,10 @@
 			// increment index and search adjacent letters recursively
 			index++;
 			if (
-				dfs(row + 1, col, currentWord, index) ||
-				dfs(row - 1, col, currentWord, index) ||
-				dfs(row, col + 1, currentWord, index) ||
-				dfs(row, col - 1, currentWord, index)
+				dfs(row + 1, col, currentWord, index, iter + 1) ||
+				dfs(row - 1, col, currentWord, index, iter + 1) ||
+				dfs(row, col + 1, currentWord, index, iter + 1) ||
+				dfs(row, col - 1, currentWord, index, iter + 1)
 			)
 				return true;
 			answer.delete(`${row}, ${col}`);
@@ -105,7 +105,7 @@
 		// traverse the grid
 		for (let i = 0; i < grid.length; i++) {
 			for (let j = 0; j < grid[i].length; j++) {
-				if (dfs(i, j, currentWord, 0)) return answer;
+				if (dfs(i, j, currentWord, 0, 1)) return answer;
 				answer = new Set();
 			}
 		}
