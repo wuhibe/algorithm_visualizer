@@ -3,11 +3,9 @@
 </script>
 
 <div class="app">
-
 	<main>
 		<slot />
 	</main>
-
 </div>
 
 <style>
@@ -20,5 +18,4 @@
 	main {
 		margin: 0 auto;
 	}
-
 </style>

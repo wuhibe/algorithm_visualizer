@@ -1,8 +1,5 @@
 <script>
 	import Cell from './Cell.svelte';
-	/**
-	 * @type {string[][]}
-	 */
 	export let grid;
 </script>
 

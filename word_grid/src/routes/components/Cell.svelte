@@ -1,6 +1,7 @@
 <script>
-	export let cell = {char:'x', state:'default'};
+	export let cell = { char: 'x', state: 'default' };
 </script>
+
 <span class={cell.state}>{cell.char}</span>
 
 <style>
