@@ -5,7 +5,6 @@
 		currentWord = '';
 	let rows = 2,
 		cols = 4,
-		iter = 1,
 		visited = new Set(),
 		answer = new Set(),
 		word = '',
@@ -106,7 +105,7 @@
 		// traverse the grid
 		for (let i = 0; i < grid.length; i++) {
 			for (let j = 0; j < grid[i].length; j++) {
-				if (dfs(i, j, currentWord, 0, iter)) return answer;
+				if (dfs(i, j, currentWord, 0, 1)) return answer;
 				answer = new Set();
 			}
 		}
