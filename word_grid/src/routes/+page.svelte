@@ -58,10 +58,14 @@
 		let j = 1;
 		visited.forEach((element) => {
 			setTimeout(() => {
-				grid[+element.split(',')[1]][+element.split(',')[2]].state = 'check';
+				grid[+element.split(',')[1]][+element.split(',')[2]].state =
+					grid[+element.split(',')[1]][+element.split(',')[2]].state == 'check'
+						? 'recheck'
+						: 'check';
 			}, 120 * j);
 			j++;
 		});
+		visited = new Set();
 		return (j + 1) * 120;
 	};
 
@@ -73,6 +77,7 @@
 			}, 150 * i);
 			i++;
 		});
+		x = null;
 	};
 
 	const searchGrid = (word) => {
@@ -93,8 +98,8 @@
 			index++;
 			if (
 				dfs(row + 1, col, currentWord, index, iter + 1) ||
-				dfs(row - 1, col, currentWord, index, iter + 1) ||
 				dfs(row, col + 1, currentWord, index, iter + 1) ||
+				dfs(row - 1, col, currentWord, index, iter + 1) ||
 				dfs(row, col - 1, currentWord, index, iter + 1)
 			)
 				return true;

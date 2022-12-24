@@ -34,4 +34,11 @@
 		background-color: #efc16c;
 		color: #121307;
 	}
+	.recheck {
+		width: 26px;
+		height: 26px;
+		border: solid 3px #5c5f45;
+		background-color: #eb843b;
+		color: #0a0a04;
+	}
 </style>
